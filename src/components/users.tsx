@@ -9,13 +9,18 @@ export interface IUser {
 	_id: string;
 }
 
+const api = axios.create({
+	baseURL: "https://send-notificator-server.herokuapp.com/"
+})
+
 export const Users = () => {
 	const [users, setUsers] = useState<IUser[]>([]);
 
 	useEffect(() => {
 		(async () => {
 			try {
-				const { data } = await axios.get<IUser[]>(`/all_tokens`);
+				const { data } = await api.get<IUser[]>(`/all_tokens`);
+				console.log(data);
 				if (data) {
 					setUsers((prev) => [...data]);
 				}
