@@ -1,6 +1,5 @@
-import axios from 'axios';
 import React, { FC, useState } from 'react';
-import { IUser } from './users';
+import { api, IUser } from './users';
 
 type FormProps = {
 	users: IUser[];
@@ -26,7 +25,7 @@ export const Form: FC<FormProps> = ({ users }: FormProps) => {
 			return;
 		}
 
-		const { data } = await axios.post('/send_notification', { ...formData });
+		const { data } = await api.post('/send_notification', { ...formData });
 		if (data.status === 'success') {
 			alert('Сообщение отправлено');
 		}

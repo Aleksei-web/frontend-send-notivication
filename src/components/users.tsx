@@ -9,7 +9,7 @@ export interface IUser {
 	_id: string;
 }
 
-const api = axios.create({
+export const api = axios.create({
 	baseURL: "https://send-notificator-server.herokuapp.com/"
 })
 
